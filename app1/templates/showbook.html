@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand mx-2" href="{% url 'home' %}">QLibrary</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto mx-2">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'show_book' %}">All Books </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!--search bar-->
+    <h3 style="text-align: center">Search your book</h3>
+    <form action="">
+      <div class="input-group d-flex justify-content-center">
+        <div class="search-box">
+          <input
+            type="search"
+            name="search"
+            style="max-width: 30rem"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button type="submit" class="btn btn-outline-primary">search</button>
+        </div>
+      </div>
+    </form>
+
+    <h1 style="margin: 10px">Here is the list of all stored books</h1>
+
+    <!--Current Working with Table-->
+    <div class="ShowingData" style="margin: 10px">
+      <table class="table">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scop="col">author</th>
+            <th scope="col">Genre</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in data %}
+          <tr>
+            <td>{{book.id}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.genre}}</td>
+            <td>{{book.ISBN}}</td>
+            <td>{{book.quantity}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <script src="" async defer></script>
+  </body>
+</html>
